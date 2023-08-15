@@ -1,26 +1,37 @@
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
 interface Product {
-    id: number;
-    name: string;
-    price: number;
+    id: number,
+    name: string,
+    category: string,
+    badge: string,
+    tags: string[],
+    image: string,
+    originalPrice: number,
+    discountPrice: number,
+    discountRate: number;
+    rating: number,
+}
+
+interface CartItem extends Product {
+    quantity: number;
 }
 
 interface ProductContextProps {
-    cart: Product[];
+    cart: CartItem[];
     addToCart: (product: Product) => void;
     removeFromCart: (productId: number) => void;
     clearCart: () => void;
 }
 
-const ProductContext = createContext<ProductContextProps | undefined>(undefined);
-
 interface ProductProviderProps {
     children: ReactNode;
 }
 
+const ProductContext = createContext<ProductContextProps | undefined>(undefined);
+
 export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
-    const [cart, setCart] = useState<Product[]>(() => {
+    const [cart, setCart] = useState<CartItem[]>(() => {
         const storedCart = localStorage.getItem('cart');
         return storedCart ? JSON.parse(storedCart) : [];
     });
@@ -30,7 +41,18 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     }, [cart]);
 
     const addToCart = (product: Product) => {
-        setCart((prevCart) => [...prevCart, product]);
+        setCart((prevCart) => {
+            const existingProduct = prevCart.find((item) => item.id === product.id);
+            if (existingProduct) {
+                const updatedCart = prevCart.map((item) =>
+                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                );
+                return updatedCart;
+            } else {
+                const cartItem: CartItem = { ...product, quantity: 1 };
+                return [...prevCart, cartItem];
+            }
+        });
     };
 
     const removeFromCart = (productId: number) => {

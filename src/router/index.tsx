@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from '../pages/Home';
-import Cart from '../pages/Cart';
-import Favourite from '../pages/Favourite';
-import NotFound from '../pages/NotFound';
+import Home from '../pages/HomePage';
+import Cart from '../pages/CartPage';
+import Favourite from '../pages/FavouritePage';
+import NotFound from '../pages/NotFoundPage';
 import Layout from "../Layout";
 
 
@@ -15,6 +15,7 @@ export default function RootRouter() {
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="favourite" element={<Favourite />} />
+          <Route path="category" element={<Favourite />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

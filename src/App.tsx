@@ -1,5 +1,5 @@
 import RootRouter from "./router"
-import { ProductProvider } from "./Context/ProductContext"
+import { ProductProvider } from "./context/ProductContext"
 
 export default function App() {
   return (
@@ -7,7 +7,6 @@ export default function App() {
       <ProductProvider>
         <RootRouter />
       </ProductProvider>
-
     </>
   )
 }

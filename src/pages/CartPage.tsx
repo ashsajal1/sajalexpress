@@ -1,13 +1,7 @@
-import React from 'react';
-import { useProductContext } from '../Context/ProductContext';
+import { useProductContext } from '../context/ProductContext';
 
-const MyComponent: React.FC = () => {
-  const { cart, addToCart, removeFromCart, clearCart } = useProductContext();
-
-  const handleAddToCart = () => {
-    const product = { id: 1, name: 'Product 1', price: 10 };
-    addToCart(product);
-  };
+export default function CartPage() {
+  const { cart, removeFromCart, clearCart } = useProductContext();
 
   const handleRemoveFromCart = (productId: number) => {
     removeFromCart(productId);
@@ -23,15 +17,13 @@ const MyComponent: React.FC = () => {
       <ul>
         {cart.map((product) => (
           <li key={product.id}>
-            {product.name} - ${product.price}
+            {product.name} - ${product.discountPrice}
             <button onClick={() => handleRemoveFromCart(product.id)}>Remove</button>
           </li>
         ))}
       </ul>
-      <button onClick={handleAddToCart}>Add to Cart</button>
       <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   );
 };
 
-export default MyComponent;

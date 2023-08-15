@@ -2,7 +2,7 @@ import { Nav, Badge, Button } from "react-bootstrap";
 import { IoCartOutline, IoHeartOutline } from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
 
-import { useProductContext } from "../Context/ProductContext";
+import { useProductContext } from "../context/ProductContext";
 
 export default function NavbarComp() {
   const { cart } = useProductContext();
@@ -13,7 +13,7 @@ export default function NavbarComp() {
       <Nav.Item className="d-flex gap-3">
         <Button variant="outline-light">
           <NavLink to="/cart" style={{ position: 'relative' }}>
-            <Badge className="bg-danger d-flex justify-content-center align-items-center" style={{ position: 'absolute', top: '0', right: '0', transform: 'translate(65%, -40%', height: '15px', width: '15px', fontSize: '10px' }}>{cart.length}</Badge>
+            <Badge className="bg-danger d-flex justify-content-center align-items-center" style={{ position: 'absolute', top: '0', right: '0', transform: 'translate(65%, -40%', height: '15px', width: '15px', fontSize: '10px' }}>{cart.reduce((acc, item) => acc + item.quantity, 0)}</Badge>
             <IoCartOutline size={'25px'} color="black" />
           </NavLink>
         </Button>

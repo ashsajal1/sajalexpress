@@ -1,9 +1,6 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Alert from 'react-bootstrap/Alert';
+import {Container, Row, Col, Alert} from 'react-bootstrap';
 
-const NotFound = () => {
+export default function NotFoundPage() {
   return (
     <Container fluid className={`container mt-4`}>
       <Row className="justify-content-center">
@@ -17,5 +14,3 @@ const NotFound = () => {
     </Container>
   );
 };
-
-export default NotFound;
