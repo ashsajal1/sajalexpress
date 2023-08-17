@@ -32,7 +32,7 @@ export default function ProductCardComp(product: Product) {
                         <Card.Title>{name}</Card.Title>
                         <Card.Subtitle className="text-muted" style={{ fontSize: '12px' }}> &gt; {category}</Card.Subtitle>
                         <Col>
-                            <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <strong style={{ fontSize: '12px' }}>{discountRate}% off!</strong>
+                            <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <Col style={{fontSize:'12px', fontWeight:"bold", display:"inline"}}>{discountRate}% off!</Col>
                         </Col>
 
                         <Col className="mt-1" style={{ color: "rgba(0,0,0,0.4", fontSize: '12px' }}>

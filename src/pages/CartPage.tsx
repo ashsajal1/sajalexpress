@@ -4,13 +4,13 @@ import { useProductContext } from '../context/ProductContext';
 import { useState } from 'react';
 
 export default function CartPage() {
-  const { cart, removeFromCart, clearCart } = useProductContext();
+  const { cart, clearCart } = useProductContext();
 
   const [showConfirmMessage, setShowConfirmMessage] = useState(false)
 
-  const handleRemoveFromCart = (productId: number) => {
-    removeFromCart(productId);
-  };
+  // const handleRemoveFromCart = (productId: number) => {
+  //   removeFromCart(productId);
+  // };
 
   const handleClearCart = () => {
     clearCart();
