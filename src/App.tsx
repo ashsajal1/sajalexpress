@@ -1,5 +1,5 @@
 import RootRouter from "./router"
-import { ProductProvider } from "./temp_context/ProductContext"
+import { ProductProvider } from "./context/ProductContext"
 
 export default function App() {
   return (
