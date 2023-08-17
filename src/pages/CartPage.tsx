@@ -1,6 +1,6 @@
 import { Button, Container, Modal, Row } from 'react-bootstrap';
 import CartProductComp from '../components/CartProductComp';
-import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../temp_context/ProductContext';
 import { useState } from 'react';
 
 export default function CartPage() {

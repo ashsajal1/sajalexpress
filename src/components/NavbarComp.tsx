@@ -2,7 +2,7 @@ import { Nav, Badge, Button } from "react-bootstrap";
 import { IoCartOutline, IoHeartOutline } from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
 
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../temp_context/ProductContext";
 
 export default function NavbarComp() {
   const { cart } = useProductContext();

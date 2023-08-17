@@ -4,7 +4,7 @@ import { useState } from 'react'
 import PaymentModalComp from "./PaymentModalComp"
 import RatingComp from "./RatingComp"
 
-import { useProductContext } from "../context/ProductContext"
+import { useProductContext } from "../temp_context/ProductContext"
 import OffCanvasComp from "./OffCanvasComp"
 
 //import types
