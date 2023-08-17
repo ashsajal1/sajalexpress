@@ -1,27 +1,13 @@
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
-interface Product {
-    id: number,
-    name: string,
-    category: string,
-    badge: string,
-    tags: string[],
-    image: string,
-    originalPrice: number,
-    discountPrice: number,
-    discountRate: number;
-    rating: number,
-}
-
-interface CartItem extends Product {
-    quantity: number;
-}
+import { Product, CartItem } from '../types';
 
 interface ProductContextProps {
     cart: CartItem[];
     addToCart: (product: Product) => void;
     removeFromCart: (productId: number) => void;
     clearCart: () => void;
+    decreaseQuantity: (ProductId: number) => void
 }
 
 interface ProductProviderProps {
@@ -59,12 +45,22 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
         setCart((prevCart) => prevCart.filter((product) => product.id !== productId));
     };
 
+    const decreaseQuantity = (productId: number) => {
+        setCart((prevCart) => {
+            return prevCart.map((product) =>
+                product.id === productId
+                    ? { ...product, quantity: product.quantity - 1 }
+                    : product
+            ).filter((product) => product.quantity > 0);
+        });
+    };
+
     const clearCart = () => {
         setCart([]);
     };
 
     return (
-        <ProductContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+        <ProductContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, decreaseQuantity }}>
             {children}
         </ProductContext.Provider>
     );

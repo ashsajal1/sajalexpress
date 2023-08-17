@@ -1,4 +1,4 @@
-import { Badge, Button, ButtonGroup, Card, Col, Container } from "react-bootstrap"
+import { Badge, Button, ButtonGroup, Card, Col } from "react-bootstrap"
 
 import { useState } from 'react'
 import PaymentModalComp from "./PaymentModalComp"
@@ -7,18 +7,8 @@ import RatingComp from "./RatingComp"
 import { useProductContext } from "../context/ProductContext"
 import OffCanvasComp from "./OffCanvasComp"
 
-interface Product {
-    id: number,
-    name: string,
-    category: string,
-    badge: string,
-    tags: string[],
-    image: string,
-    originalPrice: number,
-    discountPrice: number,
-    discountRate: number;
-    rating: number,
-}
+//import types
+import { Product } from "../types"
 
 export default function ProductCardComp(product: Product) {
     const { addToCart } = useProductContext()
@@ -41,11 +31,13 @@ export default function ProductCardComp(product: Product) {
                         <Card.Img src={image} />
                         <Card.Title>{name}</Card.Title>
                         <Card.Subtitle className="text-muted" style={{ fontSize: '12px' }}> &gt; {category}</Card.Subtitle>
-                        <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <strong>{discountRate}% off!</strong>
+                        <Col>
+                            <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <strong style={{ fontSize: '12px' }}>{discountRate}% off!</strong>
+                        </Col>
 
-                        <Container fluid className="mt-1" style={{ color: "rgba(0,0,0,0.4", fontSize: '12px' }}>
+                        <Col className="mt-1" style={{ color: "rgba(0,0,0,0.4", fontSize: '12px' }}>
                             <span>Ratings : <RatingComp rating={rating} /></span>
-                        </Container>
+                        </Col>
 
                     </Card.Body>
                     <ButtonGroup size="sm" className="p-2">

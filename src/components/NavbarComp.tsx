@@ -9,7 +9,7 @@ export default function NavbarComp() {
 
   return (
     <Nav className="justify-content-between align-items-center bg-primary px-3" style={{ height: '50px' }}>
-      <Nav.Item className=""><NavLink to={'/'}>React Shop</NavLink></Nav.Item>
+      <Nav.Item><NavLink className='text-decoration-none text-white' to={'/'}>React Shop</NavLink></Nav.Item>
       <Nav.Item className="d-flex gap-3">
         <Button variant="outline-light">
           <NavLink to="/cart" style={{ position: 'relative' }}>

@@ -1,4 +1,4 @@
-import { Modal, Row, Col, Button } from "react-bootstrap";
+import { Modal, Row, Col, Button, Container, Card } from "react-bootstrap";
 import { FaPaypal, FaGooglePay } from 'react-icons/fa6'
 
 export default function PaymentModalComp({ show, onHide }: { show: boolean, onHide: () => void }) {
@@ -9,18 +9,24 @@ export default function PaymentModalComp({ show, onHide }: { show: boolean, onHi
                     <strong>Procced to Payment!</strong>
                 </Modal.Header>
                 <Modal.Body>
-                    <Row>
-                        <Col>Col</Col>
-                    </Row>
-                    <Row md={3} className="gap-1 d-flex justify-content-center">
-                        <Button variant="outline-primary">Procced via <FaPaypal /></Button>
-                        <Button variant="outline-primary">Procced via <FaGooglePay /></Button>
-                        <Button>Cancle</Button>
 
-                    </Row>
+                    <Card>
+                        <Card.Header>Select Payment Method</Card.Header>
+                        <Card.Body>
+                            <Button variant="outline-primary">
+                                <img src='/paypal.svg' alt="PayPal" className="paypal-logo" />
+                                Pay with PayPal
+                            </Button>
+                            <Button variant="outline-primary">Procced via <FaGooglePay /></Button>
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button >Place Order</Button>
+                        </Card.Footer>
+                    </Card>
+
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button>Add to cart</Button>
+                    <Button onClick={onHide}>Cancle</Button>
                 </Modal.Footer>
             </Modal>
         </>

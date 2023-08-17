@@ -1,7 +1,12 @@
+import { Button, Container, Modal, Row } from 'react-bootstrap';
+import CartProductComp from '../components/CartProductComp';
 import { useProductContext } from '../context/ProductContext';
+import { useState } from 'react';
 
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useProductContext();
+
+  const [showConfirmMessage, setShowConfirmMessage] = useState(false)
 
   const handleRemoveFromCart = (productId: number) => {
     removeFromCart(productId);
@@ -9,21 +14,46 @@ export default function CartPage() {
 
   const handleClearCart = () => {
     clearCart();
+    setShowConfirmMessage(false)
   };
 
   return (
-    <div>
-      <h2>Cart</h2>
-      <ul>
-        {cart.map((product) => (
-          <li key={product.id}>
-            {product.name} - ${product.discountPrice}
-            <button onClick={() => handleRemoveFromCart(product.id)}>Remove</button>
-          </li>
+
+    <Container fluid>
+      <Row md={3}>
+        {cart.map(({ id, name, category, badge, tags, image, originalPrice, discountPrice, discountRate, rating, quantity }) => (
+          <CartProductComp
+            key={id}
+            id={id}
+            name={name}
+            category={category}
+            badge={badge}
+            tags={tags}
+            image={image}
+            originalPrice={originalPrice}
+            discountPrice={discountPrice}
+            discountRate={discountRate}
+            rating={rating}
+            quantity={quantity}
+          />
         ))}
-      </ul>
-      <button onClick={handleClearCart}>Clear Cart</button>
-    </div>
+      </Row>
+
+      {cart.length > 0 && <Row>
+        <Button onClick={() => setShowConfirmMessage(true)}>Clear All</Button>
+      </Row>}
+
+      <Modal show={showConfirmMessage}>
+        <Modal.Header>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure to clear all cart item?</p>
+          <Button onClick={handleClearCart}>Yes</Button>
+          <Button onClick={() => setShowConfirmMessage(false)}>No</Button>
+        </Modal.Body>
+      </Modal>
+    </Container>
   );
 };
 
