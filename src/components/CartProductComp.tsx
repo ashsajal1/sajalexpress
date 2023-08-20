@@ -37,7 +37,7 @@ export default function CartProductComp(product: CartItem) {
                     </Card.Footer>
                 </Card>
 
-                <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} />
+                <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} productId={id} />
             </Col>
         </>
     )

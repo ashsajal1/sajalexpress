@@ -15,7 +15,7 @@ export default function ProductCardComp(product: Product) {
     const [showOffCanvas, setShowOffCanvas] = useState(false)
     const [showPaymentModal, setShowPaymentModal] = useState(false)
 
-    const { name, category, badge, image, originalPrice, discountPrice, discountRate, rating } = product
+    const { id, name, category, badge, image, originalPrice, discountPrice, discountRate, rating } = product
 
     const doAddToCart = () => {
         setShowOffCanvas(true)
@@ -32,7 +32,7 @@ export default function ProductCardComp(product: Product) {
                         <Card.Title>{name}</Card.Title>
                         <Card.Subtitle className="text-muted" style={{ fontSize: '12px' }}> &gt; {category}</Card.Subtitle>
                         <Col>
-                            <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <Col style={{fontSize:'12px', fontWeight:"bold", display:"inline"}}>{discountRate}% off!</Col>
+                            <Badge><del>${originalPrice}</del> ${discountPrice}</Badge> <Col style={{ fontSize: '12px', fontWeight: "bold", display: "inline" }}>{discountRate}% off!</Col>
                         </Col>
 
                         <Col className="mt-1" style={{ color: "rgba(0,0,0,0.4", fontSize: '12px' }}>
@@ -46,7 +46,8 @@ export default function ProductCardComp(product: Product) {
                     </ButtonGroup>
                 </Card>
 
-                <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} />
+                {/* <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} /> */}
+                {showPaymentModal && <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} productId={id} />}
                 <OffCanvasComp show={showOffCanvas} onClose={() => setShowOffCanvas(!showOffCanvas)} productImage={image} productName={name} />
             </Col>
         </>

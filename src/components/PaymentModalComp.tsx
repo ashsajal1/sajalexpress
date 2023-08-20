@@ -1,7 +1,21 @@
-import { Modal, Button, Card } from "react-bootstrap";
+import { Modal, Button, Card, Container, Col } from "react-bootstrap";
 import { FaGooglePay } from 'react-icons/fa6'
+import { useProductContext } from "../context/ProductContext";
 
-export default function PaymentModalComp({ show, onHide }: { show: boolean, onHide: () => void }) {
+interface PaymentModalProps {
+    show: boolean,
+    onHide: () => void,
+    productId: number
+}
+
+export default function PaymentModalComp({ show, onHide, productId }: PaymentModalProps) {
+
+    const { cart } = useProductContext()
+
+    const requestedProduct = cart.filter(product => product.id === productId)
+    console.log(requestedProduct)
+    const {image, quantity, discountPrice} = requestedProduct[0]
+
     return (
         <>
             <Modal show={show} onHide={onHide} fullscreen>
@@ -13,6 +27,14 @@ export default function PaymentModalComp({ show, onHide }: { show: boolean, onHi
                     <Card>
                         <Card.Header>Select Payment Method</Card.Header>
                         <Card.Body>
+                            {requestedProduct ? (
+                                <Container>
+                                    <Card.Img src={image} alt={''} />
+                                    <Col className="text-danger">Quantity : {quantity} <br></br>Total Price : {quantity * discountPrice} </Col>
+                                </Container>
+                            ) : (
+                                <Container>No product is selected yet!</Container>
+                            )}
                             <Button variant="outline-primary">
                                 <img src='/paypal.svg' alt="PayPal" className="paypal-logo" />
                                 Pay with PayPal
