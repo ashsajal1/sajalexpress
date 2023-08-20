@@ -3,8 +3,11 @@ import { CiMenuFries, CiHome, CiLogin, CiShare1, CiShoppingCart, CiAlarmOn } fro
 
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import { useProductContext } from "../context/ProductContext"
 
 export default function MobileNavComp() {
+
+    const { cart } = useProductContext()
     const [showMenu, setshowMenu] = useState(false)
 
     const handleClose = () => {
@@ -42,7 +45,7 @@ export default function MobileNavComp() {
 
                     </NavLink>
                     <NavLink onClick={handleClose} className='text-decoration-none text-white' to={'/cart'}>
-                        <Col className="bg-primary p-2 rounded mt-2"><CiShoppingCart size='25px' /> Carts <Badge className="bg-danger">2</Badge></Col>
+                        <Col className="bg-primary p-2 rounded mt-2"><CiShoppingCart size='25px' /> Carts <Badge className="bg-danger">{cart.reduce((acc, item) => acc + item.quantity, 0)}</Badge></Col>
                     </NavLink>
 
                     <Col className="bg-primary p-2 rounded mt-2"><CiShare1 size='25px' /> Explore Products</Col>
