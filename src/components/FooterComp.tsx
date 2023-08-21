@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import { CiFacebook, CiInstagram, CiTwitter } from 'react-icons/ci';
 
 const FooterComp = () => {
   return (
@@ -12,9 +13,9 @@ const FooterComp = () => {
           <Col md={4}>
             <h5>Follow Us</h5>
             <ul className="list-unstyled">
-              <li>Twitter</li>
-              <li>Facebook</li>
-              <li>Instagram</li>
+              <li><CiTwitter /> Twitter</li>
+              <li><CiFacebook /> Facebook</li>
+              <li><CiInstagram /> Instagram</li>
             </ul>
           </Col>
           <Col md={4}>

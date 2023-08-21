@@ -11,11 +11,12 @@ import OffCanvasComp from "./OffCanvasComp"
 import { Product } from "../types"
 
 export default function ProductCardComp(product: Product) {
+
+    const { id, name, category, badge, image, originalPrice, discountPrice, discountRate, rating } = product
+
     const { addToCart } = useProductContext()
     const [showOffCanvas, setShowOffCanvas] = useState(false)
     const [showPaymentModal, setShowPaymentModal] = useState(false)
-
-    const { id, name, category, badge, image, originalPrice, discountPrice, discountRate, rating } = product
 
     const doAddToCart = () => {
         setShowOffCanvas(true)
@@ -47,7 +48,7 @@ export default function ProductCardComp(product: Product) {
                 </Card>
 
                 {/* <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} /> */}
-                {showPaymentModal && <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={showPaymentModal} productId={id} />}
+                {showPaymentModal && <PaymentModalComp onHide={() => setShowPaymentModal(false)} show={true} productId={id} />}
                 <OffCanvasComp show={showOffCanvas} onClose={() => setShowOffCanvas(!showOffCanvas)} productImage={image} productName={name} />
             </Col>
         </>

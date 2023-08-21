@@ -1,29 +1,11 @@
-import { useState, useEffect } from 'react';
 import { Button, Offcanvas, Row, Image, Badge, Container } from 'react-bootstrap';
 import { FiCheck } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
+import useWindowSize from '../utilities/useWindowSize';
 
 export default function OffCanvasComp({ show, onClose, productImage, productName }: { show: boolean, onClose: () => void, productImage: string, productName: string }) {
 
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        // Function to check screen size and update state
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
-        };
-
-        // Initial check when the component mounts
-        checkScreenSize();
-
-        // Add event listener to track screen size changes
-        window.addEventListener('resize', checkScreenSize);
-
-        // Clean up the event listener when the component unmounts
-        return () => {
-            window.removeEventListener('resize', checkScreenSize);
-        };
-    }, []);
+    const isMobile = useWindowSize()
 
     return (
         <>
