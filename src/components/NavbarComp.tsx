@@ -29,7 +29,7 @@ export default function NavbarComp() {
             <Button variant="warning">Search</Button>
           </Form>
 
-          <Button variant="outline-light">
+          <Button variant="primary" style={{backgroundColor:'#0a58ca'}}>
             <NavLink to="cart" style={{ position: 'relative' }}>
               <Badge className="bg-danger d-flex justify-content-center align-items-center" style={{ position: 'absolute', top: '0', right: '0', transform: 'translate(65%, -40%', height: '15px', width: '15px', fontSize: '10px' }}>{cart.reduce((acc, item) => acc + item.quantity, 0)}</Badge>
               <CiShoppingCart size={'25px'} color="white" />

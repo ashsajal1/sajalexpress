@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from '../pages/HomePage';
-import Cart from '../pages/CartPage';
-import Favourite from '../pages/FavouritePage';
-import NotFound from '../pages/NotFoundPage';
+import Home from "../pages/HomePage";
+import Cart from "../pages/CartPage";
+import Favourite from "../pages/FavouritePage";
+import NotFound from "../pages/NotFoundPage";
 import Layout from "../Layout";
-
 
 export default function RootRouter() {
   return (
@@ -20,5 +19,5 @@ export default function RootRouter() {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
