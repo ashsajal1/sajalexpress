@@ -40,7 +40,7 @@ export default function MobileNavComp() {
                     <NavLink onClick={handleClose} className='text-decoration-none text-white' to={'/'}>
                         <Col className="bg-primary p-2 rounded mt-2"><CiHome size='25px' /> Home</Col>
                     </NavLink>
-                    <NavLink onClick={handleClose} className='text-decoration-none text-white' to={'/register'}>
+                    <NavLink onClick={handleClose} className='text-decoration-none text-white' to={'/login'}>
                         <Col className="bg-primary p-2 rounded mt-2"><CiLogin size='25px' /> Login/Register</Col>
 
                     </NavLink>

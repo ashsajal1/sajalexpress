@@ -30,7 +30,7 @@ const FooterComp = () => {
         <Row>
           <Col>
             <p className="text-center mt-4">
-              &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+              &copy; {new Date().getFullYear()} Sajal Express. All rights reserved.
             </p>
           </Col>
         </Row>

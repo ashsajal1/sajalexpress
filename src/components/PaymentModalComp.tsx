@@ -69,7 +69,7 @@ function PaymentModalComp({ show, onHide, productId }: PaymentModalProps) {
                   <br></br>Total Price :{" "}
                   {doExistInCart
                     ? existedProductInCart[0].quantity *
-                      existedProductInCart[0].discountPrice
+                    existedProductInCart[0].discountPrice
                     : nonExistedProductInCart[0].discountPrice}{" "}
                 </Col>
               </Container>
@@ -92,31 +92,34 @@ function PaymentModalComp({ show, onHide, productId }: PaymentModalProps) {
                   <Form.Group>
                     <Form.Label>Card Holder Name</Form.Label>
                     <Form.Control
-                      type="tel"
+                      type="text"
                       placeholder="Card Holder Name"
-                    ></Form.Control>
+                    />
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>Card number</Form.Label>
+                    <Form.Label>Card Number</Form.Label>
                     <InputGroup>
-                      <Form.Control placeholder="Valid Card Number"></Form.Control>
-
+                      <Form.Control
+                        placeholder="Valid Card Number"
+                      />
                       <InputGroup.Text>
                         <CiCreditCard1 />
                       </InputGroup.Text>
                     </InputGroup>
                   </Form.Group>
-
                   <Row>
                     <Col>
-                      <Form.Label>EXPIRATION DATE</Form.Label>
-                      <Form.Control placeholder="MM / YY"></Form.Control>
+                      <Form.Label>Expiration Date</Form.Label>
+                      <Form.Control placeholder="MM / YY" />
                     </Col>
                     <Col>
                       <Form.Label>CVC</Form.Label>
-                      <Form.Control placeholder="CV CODE"></Form.Control>
+                      <Form.Control placeholder="CV CODE" />
                     </Col>
                   </Row>
+                  <Button variant="primary" className="mt-3">
+                    Submit
+                  </Button>
                 </Form>
               )}
             </Card.Body>
